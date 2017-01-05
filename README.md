@@ -3,7 +3,7 @@ Description: Image Segmentation using a standard algorithm for image segmentatio
 
 Purpose: I made this program to learn more about Image Segmentation and is also intended for other beginners to learn Image Segmentation through a working example. I am posting important information about this project underneath to help others gain atleast a minimal understanding of this code along with proper documentation in the code.
 
-**Note:** Not using any libraries/frameworks outside of the initial Java library.
+**Note:** Not using any libraries/frameworks outside of the standard Java library.
 
 **Another note:** The code is documented very well and includes the time complexity of most functions
 
