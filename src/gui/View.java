@@ -3,6 +3,7 @@ package gui;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
@@ -17,11 +18,14 @@ import model.Algorithms.Algorithm;
 import model.Algorithms.KMeansAlgorithm;
 public class View extends Application {
 
-	
 	private int sceneWidth = 800, sceneHeight = 300;
 	private ImageView originalImageView, alteredImageView;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the number of clusters you want: ");
+		int num = scan.nextInt();
+		
 		originalImageView = new ImageView();
 		originalImageView.setFitHeight(sceneHeight);
 		originalImageView.setFitWidth(sceneWidth/2);
@@ -44,7 +48,7 @@ public class View extends Application {
 		BufferedImage originalImg = ImageIO.read(new File("./images/cat.jpg"));
 		originalImageView.setImage(SwingFXUtils.toFXImage(originalImg, null));
 
-		int numOfClusters = 5;
+		int numOfClusters = num;
 		
 		ImageMatrix imageMatrix = new ImageMatrix(originalImg, numOfClusters);
 		Algorithm algorithm = new KMeansAlgorithm(imageMatrix);
@@ -53,10 +57,13 @@ public class View extends Application {
 		BufferedImage segmentedImg = imageMatrix.getSegmentedImage();
 		
 		alteredImageView.setImage(SwingFXUtils.toFXImage(segmentedImg, null));
-		
+		scan.close();
 	}
 
 
+	public static void main(String[] args) {
 	
+		Application.launch(args);
+	}
 	
 }
